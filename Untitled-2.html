@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donna's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #0a1e33;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #0a1e33;
+            padding: 15px 50px;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #f29c1f;
+        }
+
+        /* Portfolio Card (Home) */
+        #home {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            padding-top: 80px; /* navbar space */
+        }
+
+        .portfolio-card {
+            width: 900px;
+            height: 500px;
+            background: linear-gradient(135deg, #fff, #f0f0f0);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .shape {
+            position: absolute;
+            z-index: 0;
+        }
+
+        .shape.top-left {
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background: #f29c1f;
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+        }
+
+        .shape.bottom-right {
+            bottom: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: #e63946;
+            clip-path: polygon(100% 0, 100% 100%, 0 100%);
+        }
+
+        .content {
+            display: flex;
+            z-index: 1;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .text-section {
+            max-width: 50%;
+        }
+
+        .text-section h1 {
+            font-size: 4rem;
+            color: #0a1e33;
+            margin-bottom: 20px;
+        }
+
+        .text-section p {
+            font-size: 1.2rem;
+            color: #e63946;
+            margin-bottom: 10px;
+        }
+
+        .text-section span {
+            font-size: 1rem;
+            color: #0a1e33;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .image-section {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #0a1e33;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+
+        .icon.left {
+            bottom: -10px;
+            left: -10px;
+        }
+
+        .icon.right {
+            top: -10px;
+            right: -10px;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 50px;
+            min-height: 100vh;
+        }
+
+        section:nth-child(even) {
+            background: #fff;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #0a1e33;
+            margin-bottom: 20px;
+        }
+
+        p, li {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        ul {
+            list-style: disc inside;
+        }
+
+        /* Contact Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 2px solid #0a1e33;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #f29c1f;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #e63946;
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .portfolio-card {
+                flex-direction: column;
+                align-items: center;
+                height: auto;
+            }
+
+            .text-section {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .image-section {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="portfolio-card">
+            <div class="shape top-left"></div>
+            <div class="shape bottom-right"></div>
+
+            <div class="content">
+                <div class="text-section">
+                    <h1>Donna Stroupe</h1>
+                    <p>Web Designer & Writer</p>
+                    <span>Online Portfolio 2024</span>
+                </div>
+                <div class="image-section">
+                    <img src="myphoto.jpg" alt="Profile Picture">
+                    <div class="icon left">🖋</div>
+                    <div class="icon right">🎨</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm Donna, an aspiring web designer and creative writer. I love building modern, clean, and user-friendly websites while expressing myself through words. My goal is to combine design and storytelling for a unique experience.</p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>React.js & Front-End Development</li>
+            <li>Python & C++</li>
+            <li>UI/UX Design & Wireframing</li>
+            <li>Content Writing & Blogging</li>
+        </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+</body>
+</html>

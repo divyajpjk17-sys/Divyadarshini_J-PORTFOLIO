@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divyadarshini Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: #f5f5f5;
+        color: #0a1e33;
+    }
+
+    /* Navbar */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: #0a1e33;
+        padding: 15px 50px;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+        color: #f29c1f;
+    }
+
+    /* Section cards */
+    section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 80px 50px 50px 50px;
+        position: relative;
+    }
+
+    .portfolio-card {
+        width: 900px;
+        min-height: 400px;
+        background: linear-gradient(135deg, #fff, #f0f0f0);
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .shape {
+        position: absolute;
+        z-index: 0;
+    }
+
+    .shape.top-left {
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 150px;
+        background: #f29c1f;
+        clip-path: polygon(0 0, 100% 0, 0 100%);
+    }
+
+    .shape.bottom-right {
+        bottom: 0;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        background: #e63946;
+        clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    }
+
+    /* Text and image */
+    .content {
+        display: flex;
+        z-index: 1;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .text-section {
+        max-width: 50%;
+    }
+
+    .text-section h1, .text-section h2 {
+        color: #0a1e33;
+    }
+
+    .text-section h1 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+
+    .text-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .text-section p, li, span {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .image-section {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        margin-top: 20px;
+    }
+
+    .image-section img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 8px solid #fff;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .image-section.top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+}
+.image-section.top-right img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+    .icon {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #0a1e33;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        font-size: 1.2rem;
+    }
+
+    .icon.left { bottom: -10px; left: -10px; }
+    .icon.right { top: -10px; right: -10px; }
+
+    /* Skills list */
+    ul { list-style: disc inside; }
+
+    /* Contact form */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        max-width: 500px;
+    }
+
+    input, textarea {
+        padding: 10px;
+        border: 2px solid #0a1e33;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+
+    button {
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: #f29c1f;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background: #e63946;
+    }
+
+    @media (max-width: 1000px) {
+        .portfolio-card { width: 90%; flex-direction: column; }
+        .text-section { max-width: 100%; text-align: center; }
+        .image-section { margin: 20px auto 0 auto; }
+    }
+</style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="portfolio-card">
+            <div class="shape top-left"></div>
+            <div class="shape bottom-right"></div>
+            <div class="content">
+                <div class="text-section">
+                    <h1>Aspiring Web Developer & Writer</h1>
+                    <p>Divyadarshini J | 2025</p>
+                    <span>Future Engineer - IoT </span>
+                </div>
+                <div class="image-section">
+                    <img src="myimage1.jpg" alt="Profile Picture">
+                    <div class="icon left">🖋</div>
+                    <div class="icon right">👩🏻‍🎓</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="portfolio-card">
+            <div class="shape top-left"></div>
+            <div class="shape bottom-right"></div>
+            <div class="content">
+                <div class="text-section">
+                    <h2>About Me</h2>
+                    <p>I’m Divya, an aspiring web developer with a passion for creating clean and engaging digital experiences.</p>
+
+                    <p>Hands-on experience with HTML, CSS, JavaScript, and Python.</p>
+
+                    <p>Enjoy turning ideas into functional, user-friendly websites.</p>
+
+                    <p>A writer who loves weaving stories and sharing thoughts creatively.</p>
+
+                    <p>Exploring full-stack development to expand technical horizons.</p>
+
+                    <p>Believe in learning by building and making every project meaningful.</p>
+                </div>
+                 <div class="image-section top-right">
+            <img src="myimage1.jpg" alt="Profile Picture">
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="portfolio-card">
+            <div class="shape top-left"></div>
+            <div class="shape bottom-right"></div>
+            <div class="content">
+                <div class="text-section">
+                    <h2>Technical Skills</h2>
+                    <ul>
+                        <li>HTML, CSS, Java</li>
+                        <li>problem solving</li>
+                        <li>Python & C++</li>
+                        <li>Debugging</li>
+                        <li>Content Writing</li>
+                    </ul>
+                    <p>Always learning , always building, one line of code at a time.
+                    </p>
+                </div>
+                 <div class="image-section top-right">
+            <img src="myimage1.jpg" alt="Skills Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="portfolio-card">
+            <div class="shape top-left"></div>
+            <div class="shape bottom-right"></div>
+            <div class="content">
+                <div class="text-section">
+                    <h2>Contact Me</h2>
+                    
+                    <h5>divyajpjk17@gmail.com</h5>
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
